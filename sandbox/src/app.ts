@@ -5,17 +5,18 @@ interface Order {
 }
 
 interface Stripe {
+    type: 'stripe';
     card: string;
     cvc: string;
 }
 
 interface PayPal {
+    type: 'paypal';
     email: string;
 }
 
 type CheckoutCard = Order & Stripe;
 type CheckoutPayPal = Order & PayPal;
-type CheckoutABC = Order & { name: string };
 
 const order: Order = {
     id: 'xj27s',
@@ -25,13 +26,24 @@ const order: Order = {
 
 const orderCard: CheckoutCard = {
     ...order,
+    type: 'stripe',
     card: '1000 2000 3000 400',
     cvc: '123',
 };
 
 const orderPayPal: CheckoutPayPal = {
     ...order,
+    type: 'paypal',
     email: 'over@abr.foo',
 };
 
-const assigned = Object.assign({}, order, orderCard);
+type Payload = CheckoutCard | CheckoutPayPal;
+
+function checkout(payload: Payload) {
+    if (payload.type === 'stripe') {
+        console.log(payload.card, payload.cvc);
+    }
+    if (payload.type === 'paypal') {
+        console.log(payload.email);
+    }
+}
