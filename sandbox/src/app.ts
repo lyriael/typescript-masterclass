@@ -1,32 +1,25 @@
-class Foo {
-    bar() {}
-}
-
-function Foo2(){}
-Foo2.prototype.bar = function () {};
-
-const bar = new Foo();
-
-// console.log(bar instanceof Foo);
-// console.log(Object.getPrototypeOf(bar) === Foo.prototype);
+const exists = 'localStorage' in window;
 
 class Song {
+    kind: 'song';
     constructor(public title: string, public duration: number) {
     }
 }
 
 class Playlist {
+    kind: 'playlist';
     constructor(public name: string, public songs: Song[]) {
     }
 }
 
 function isSong(item: any): item is Song {
-    return item instanceof Song;
+    return 'title' in item;
 }
 
 function getItemName(item: Song | Playlist) {
-    if (isSong(item)) {
-        return item.title;
+    // if (isSong(item)) {
+    if (item.kind === 'song') {
+    return item.title;
     }
     return item.name;
 }
