@@ -1,33 +1,37 @@
-const exists = 'localStorage' in window;
-
-class Song {
-    kind: 'song';
-    constructor(public title: string, public duration: number) {
-    }
+interface Order {
+    id: string;
+    amount: number;
+    currency: string;
 }
 
-class Playlist {
-    kind: 'playlist';
-    constructor(public name: string, public songs: Song[]) {
-    }
+interface Stripe {
+    card: string;
+    cvc: string;
 }
 
-function isSong(item: any): item is Song {
-    return 'title' in item;
+interface PayPal {
+    email: string;
 }
 
-function getItemName(item: Song | Playlist) {
-    // if (isSong(item)) {
-    if (item.kind === 'song') {
-    return item.title;
-    }
-    return item.name;
-}
+type CheckoutCard = Order & Stripe;
+type CheckoutPayPal = Order & PayPal;
+type CheckoutABC = Order & { name: string };
 
-const songName = getItemName(new Song('Wonderful, Wonderful', 300000));
-console.log('Song name: ', songName);
+const order: Order = {
+    id: 'xj27s',
+    amount: 100,
+    currency: 'USD'
+};
 
-const playlistName = getItemName(
-    new Playlist('The Best Songs', [new Song('The Man', 300000)])
-);
-console.log('Song name: ', playlistName);
+const orderCard: CheckoutCard = {
+    ...order,
+    card: '1000 2000 3000 400',
+    cvc: '123',
+};
+
+const orderPayPal: CheckoutPayPal = {
+    ...order,
+    email: 'over@abr.foo',
+};
+
+const assigned = Object.assign({}, order, orderCard);
