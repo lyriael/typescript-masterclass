@@ -1,15 +1,12 @@
-function reverse(str: string): string;
-function reverse<T>(arr: any[]): any[];
-
-function reverse<T>(something: string | T[]): string | T[] {
-    if (typeof something === "string") {
-        return something
-            .split('')
-            .reverse()
-            .join('');
-    }
-    return something.slice().reverse();
+enum Sizes {
+    Small,
+    Medium,
+    Large,
 }
 
-reverse('Pepperoni');
-reverse(['bacon', 'pepperoni', 'chilli', 'mushrooms']);
+enum Sizes {
+    ExtraLarge = 3,
+}
+
+console.log(Sizes.Medium);
+console.log(Sizes.ExtraLarge, Sizes[Sizes.ExtraLarge]);
