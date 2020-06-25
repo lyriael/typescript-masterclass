@@ -1,5 +1,1 @@
-export class Foo {
-    constructor(public name: string) {
-    }
-    bar(age: number){}
-}
+function log(message: any) {} 
