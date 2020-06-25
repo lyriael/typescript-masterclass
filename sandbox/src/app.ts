@@ -1,3 +1,1 @@
-class Person {
-    name: string;
-}
+export class App {}
