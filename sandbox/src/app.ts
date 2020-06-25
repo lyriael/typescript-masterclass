@@ -1,14 +1,3 @@
-const enum Sizes {
-    Small = 'small',
-    Medium = 'medium',
-    Large = 'large',
-}
+import * as _ from 'lodash';
 
-let selected: Sizes;
-
-function updateSize(size: Sizes): void {
-    selected = size;
-}
-
-updateSize(Sizes.Large);
-console.log(selected);
+_.chunk([1,2,3,4], 2); // [[1,2],[3,4]]
