@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "declaration": true, // creates declaration file
+    "declarationDir": "./@types", // where it is generated
     "target": "es5",
     "module": "commonjs",
     "lib": ["dom", "es6"],
