@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "system",
     "lib": ["dom", "es6"],
-    "outDir": "dist"
+    "outFile": "dist/bundle.js",
+    "noEmitOnError": true,
+    "noImplicitAny": true
   }
 }
