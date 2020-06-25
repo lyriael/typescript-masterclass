@@ -4,9 +4,8 @@
     "module": "commonjs",
     "lib": ["es6", "dom"],
     "outDir": "dist",
-//    "traceResolution": true
-//    "diagnostics": true
-//    "listFiles": true
-    "listEmittedFiles": true
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true
   }
 }
