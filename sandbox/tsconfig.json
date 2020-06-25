@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "system",
     "lib": ["dom", "es6"],
     "outDir": "dist",
-    "sourceMap": true,
-//    "inlineSourceMap": true,
-    "inlineSources": true,
-    "mapRoot": "/mappings/"
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }
