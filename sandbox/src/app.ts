@@ -1,2 +1,3 @@
-Array.from(document.querySelectorAll('*'));
-setTimeout(() => {}, 3);
+class Person {
+    name: string;
+}
